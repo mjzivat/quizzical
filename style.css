@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+.answer-container {
+    
+}
+
+.answer {
+    background-color: white;
+}
+
+.answer-container {
+    padding: 10px;
+    display: flex;
+    justify-content: left; 
+    margin-top: -15px;
+}
+
+.answer-container > * {
+    
+    text-align: center; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+  
+.radio-label {
+    background-color: transparent; 
+    color: #293264;
+    border: 1px solid #293264;
+    border-radius: 10px; 
+    cursor: pointer; 
+    padding:7px 25px;
+    margin: 10px;
+    user-select: none;
+  }
+  
+input[type="radio"] {
+    display: none; 
+}
