@@ -18,12 +18,9 @@ export default function Quiz() {
                     const id = nanoid()
                     const question = he.decode(triv.question)
                     const correctAnswer = he.decode(triv.correct_answer)
-                    const incorrectAnswers = triv.incorrect_answers
-                    
+                    const incorrectAnswers = triv.incorrect_answers.map(he.decode)
+
                     let allAnswers = incorrectAnswers.toSpliced((incorrectAnswers.length+1) * Math.random() | 0, 0, correctAnswer)
-                    allAnswers.map(answer => {
-                        he.decode(answer)
-                    })
                     
                     return {
                         // ...triv, 
@@ -55,8 +52,6 @@ export default function Quiz() {
                 setCorrectAnswers(correctAnswerObj)
             })
     }, [])
-    
-    console.log(correctAnswers)
     
     
     function handleChange(event) {
@@ -96,7 +91,6 @@ export default function Quiz() {
                     }
                 })
                 
-        // console.log(answerArray)
         
         return (
             <Question
