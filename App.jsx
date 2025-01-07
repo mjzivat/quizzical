@@ -7,15 +7,17 @@ import Quiz from "./components/Quiz"
 export default function App() {
     const [game, setGame] = React.useState(false)
 
-    function beginGame() {
+    function toggleGame() {
         setGame(prevGame => !prevGame)
     }
     
     return (
         <main>
-            {game && <Quiz />}
+            {game && <Quiz 
+                toggleGame = {toggleGame}
+            />}
             {!game && <Start
-                beginGame = {beginGame}
+                toggleGame = {toggleGame}
             />}
         </main>
         

@@ -3,9 +3,10 @@ import Question from "./Question"
 import he from "he"
 import { nanoid } from "nanoid"
 
-export default function Quiz() {
+export default function Quiz(props) {
     const [trivia, setTrivia] = React.useState([])
     const [formData, setFormData] = React.useState({})
+    const [correctSelected, setCorrectSelected] = React.useState([])
     const [correctAnswers, setCorrectAnswers] = React.useState({})
     const [quizSubmitted, setQuizSubmitted] = React.useState(false)
     
@@ -64,10 +65,22 @@ export default function Quiz() {
             
         })
     }
+
+    function addCorrectSelected(answer) {
+        setCorrectSelected(()=>{
+            correctSelected.push(answer)
+        })
+    }
     
     function handleSubmit(event) {
         event.preventDefault()
-        setQuizSubmitted(true)
+        if (quizSubmitted) {
+            props.toggleGame()
+            
+        } else {
+            setQuizSubmitted(true)
+        }
+        
     }
     
     const questionEls = trivia.map(item => {
@@ -80,6 +93,8 @@ export default function Quiz() {
                     isCorrect: answer===item.correctAnswer ? "true" : undefined,
                     }
                 })
+
+        
                 
         
         return (
@@ -91,6 +106,7 @@ export default function Quiz() {
                 handleChange={handleChange}
                 correctAnswers={correctAnswers}
                 selectedAnswers={formData}
+                addCorrectSelected = {addCorrectSelected}
                 quizSubmitted={quizSubmitted}
             />
         )
@@ -100,7 +116,8 @@ export default function Quiz() {
     return (
         <form onSubmit={handleSubmit}>
             {questionEls}
-            <button>Check Answers</button>
+            {quizSubmitted && <p>`You scored {correctSelected.length}/{questionEls.length} correct answers!`</p>}
+            <button>{quizSubmitted ? "Play Again" : "Check Answers"}</button>
         </form>
         
         

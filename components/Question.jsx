@@ -9,6 +9,7 @@ export default function Question(props) {
     const answerArray = props.answerArray
     const selectedAnswers = props.selectedAnswers
     const quizSubmitted = props.quizSubmitted
+    const addCorrectSelected = props.addCorrectSelected
     
     const answerEls = answerArray.map(answer => {
         const name = props.id
@@ -20,7 +21,9 @@ export default function Question(props) {
         let border = '';
         let fontColor = ''; 
         let opacity = '';
-        
+        if (quizSubmitted && (correct && selected)) {
+            addCorrectSelected()
+        }
         if (quizSubmitted && (correct || selected)) {
             backgroundColor = correct ? '#94D7A2' : '#F8BCBC'
         } else if (selected) {
