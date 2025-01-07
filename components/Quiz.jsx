@@ -65,22 +65,12 @@ export default function Quiz() {
         })
     }
     
-    console.log(formData)
-    // type === "checkbox" ? checked : value
-    
     function handleSubmit(event) {
         event.preventDefault()
         setQuizSubmitted(true)
     }
     
     const questionEls = trivia.map(item => {
-        // const correctAnswer = item.correct_answer
-        // const incorrectAnswers = item.incorrect_answers
-        // const allAnswers = incorrectAnswers.toSpliced((incorrectAnswers.length+1) * Math.random() | 0, 0, correctAnswer)
-        // incorrectAnswers.map(ans => {
-        //     allAnswers.push(ans)
-        // })
-        // allAnswers.splice((allAnswers.length+1) * Math.random() | 0, 0, correctAnswer)
         const allAnswers = item.allAnswers
         const answerArray = allAnswers.map(answer => {
                     const id = nanoid()

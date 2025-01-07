@@ -5,12 +5,18 @@ import Start from "./components/Start"
 import Quiz from "./components/Quiz"
 
 export default function App() {
-    const [game, setGame] = React.useState(true)
+    const [game, setGame] = React.useState(false)
+
+    function beginGame() {
+        setGame(prevGame => !prevGame)
+    }
     
     return (
         <main>
             {game && <Quiz />}
-            {!game && <Start />}
+            {!game && <Start
+                beginGame = {beginGame}
+            />}
         </main>
         
     )
