@@ -28,10 +28,12 @@ export default function Question(props) {
             backgroundColor = correct ? '#94D7A2' : '#F8BCBC'
         } else if (selected) {
             backgroundColor = '#D6DBF5'
+        } else {
+            backgroundColor = '#FFF'
         }
         
         return (
-            <div key={answer.id} className="answer">
+            <div key={answer.id}>
                 <input 
                     type="radio"
                     id={answer.id}
@@ -50,7 +52,7 @@ export default function Question(props) {
     // console.log(formData)
     
     return (
-        <div key={props.id}>
+        <div className="question-container" key={props.id}>
             <h3>{props.questText}</h3>
             <div className="answer-container">
                 {answerEls}

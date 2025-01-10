@@ -114,7 +114,7 @@ export default function Quiz(props) {
 
     
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="quiz" onSubmit={handleSubmit}>
             {questionEls}
             {quizSubmitted && <p>`You scored {correctSelected.length}/{questionEls.length} correct answers!`</p>}
             <button>{quizSubmitted ? "Play Again" : "Check Answers"}</button>
