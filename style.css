@@ -148,7 +148,7 @@ input[type="radio"] {
     }
 
     .quiz h3 {
-        font-size: 1.25rem;
+        font-size: 1.15rem;
     }
 
     .quiz {
@@ -160,7 +160,7 @@ input[type="radio"] {
     }
 
     .radio-label {
-        font-size: .9rem;
+        font-size: .8rem;
     }
 
     .score {
