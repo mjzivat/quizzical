@@ -130,7 +130,7 @@ input[type="radio"] {
 @media (max-width: 480px) {
 
     body {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
     .start,
@@ -148,19 +148,19 @@ input[type="radio"] {
     }
 
     .quiz h3 {
-        font-size: 1.15rem;
+        font-size: 1rem;
     }
 
     .quiz {
-        padding: 1em;
+        padding: .5em;
     }
 
     .quiz button {
-        font-size: 1.15rem;
+        font-size: 1rem;
     }
 
     .radio-label {
-        font-size: .8rem;
+        font-size: .75rem;
     }
 
     .score {
