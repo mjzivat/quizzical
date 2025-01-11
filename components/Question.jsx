@@ -9,6 +9,7 @@ export default function Question(props) {
     const answerArray = props.answerArray
     const selectedAnswers = props.selectedAnswers
     const quizSubmitted = props.quizSubmitted
+    // const correctSelected = props.correctSelected
     const addCorrectSelected = props.addCorrectSelected
     
     const answerEls = answerArray.map(answer => {
@@ -21,9 +22,8 @@ export default function Question(props) {
         let border = '';
         let fontColor = ''; 
         let opacity = '';
-        if (quizSubmitted && (correct && selected)) {
-            addCorrectSelected()
-        }
+            
+
         if (quizSubmitted && (correct || selected)) {
             backgroundColor = correct ? '#94D7A2' : '#F8BCBC'
         } else if (selected) {
@@ -46,10 +46,7 @@ export default function Question(props) {
             </div>
         )
     })
-    
-    
-    // console.log(isCorrect)
-    // console.log(formData)
+
     
     return (
         <div className="question-container" key={props.id}>
@@ -62,13 +59,3 @@ export default function Question(props) {
     )
     
 }
-
-// <p
-                //     id={nanoid()}
-                //     // key={answer.id}
-                //     className="answer"
-                //     onClick={props.selectAnswer}
-                // >
-                // {answer}
-                // </p>
-            

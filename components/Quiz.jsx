@@ -9,6 +9,7 @@ export default function Quiz(props) {
     const [correctSelected, setCorrectSelected] = React.useState([])
     const [correctAnswers, setCorrectAnswers] = React.useState({})
     const [quizSubmitted, setQuizSubmitted] = React.useState(false)
+    // let score = 0
     
     React.useEffect(()=> {
         fetch("https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple")
@@ -54,6 +55,18 @@ export default function Quiz(props) {
             })
     }, [])
     
+
+    let score = function(obj1, obj2) {
+        const result = {}
+      
+        for (const key in obj1) {
+          if (obj2.hasOwnProperty(key) && obj1[key] === obj2[key]) {
+            result[key] = obj1[key]
+          }
+        }
+      
+        return Object.keys(result).length
+    }
     
     function handleChange(event) {
         const { name, value, checked, correct } = event.target
@@ -66,17 +79,10 @@ export default function Quiz(props) {
         })
     }
 
-    function addCorrectSelected(answer) {
-        setCorrectSelected(()=>{
-            correctSelected.push(answer)
-        })
-    }
-    
     function handleSubmit(event) {
         event.preventDefault()
         if (quizSubmitted) {
             props.toggleGame()
-            
         } else {
             setQuizSubmitted(true)
         }
@@ -106,7 +112,6 @@ export default function Quiz(props) {
                 handleChange={handleChange}
                 correctAnswers={correctAnswers}
                 selectedAnswers={formData}
-                addCorrectSelected = {addCorrectSelected}
                 quizSubmitted={quizSubmitted}
             />
         )
@@ -116,8 +121,11 @@ export default function Quiz(props) {
     return (
         <form className="quiz" onSubmit={handleSubmit}>
             {questionEls}
-            {quizSubmitted && <p>`You scored {correctSelected.length}/{questionEls.length} correct answers!`</p>}
-            <button>{quizSubmitted ? "Play Again" : "Check Answers"}</button>
+            <div className="score-container">
+                {quizSubmitted && <p className="score">You scored {score(formData, correctAnswers)}/5 correct answers!</p>}
+                <button>{quizSubmitted ? "Play Again" : "Check Answers"}</button>
+            </div>
+
         </form>
         
         
